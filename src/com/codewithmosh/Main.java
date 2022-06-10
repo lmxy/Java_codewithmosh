@@ -37,6 +37,12 @@ public class Main {
             System.out.println("Enter a value between 1 and 30.");
         }
 
+        printMortgage(principal, annualInterest, years);
+
+        printPaymentSchedule(principal, annualInterest, years);
+    }
+
+    private static void printMortgage(int principal, float annualInterest, byte years) {
         double mortgage = calculateMortgage(principal, annualInterest, years);
 
         String mortgageFormatted = NumberFormat.getCurrencyInstance(Locale.US).format(mortgage);
@@ -44,7 +50,9 @@ public class Main {
         System.out.println("MORTGAGE");
         System.out.println("--------");
         System.out.println("Monthly Payments: " + mortgageFormatted);
+    }
 
+    private static void printPaymentSchedule(int principal, float annualInterest, byte years) {
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("----------------");

@@ -1,23 +1,15 @@
 package com.lambdas;
 
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class LambdaDemo {
     public static void show() {
-        // "key:value"
-        // first: "key=value"
-        //  second: "{key=value}"
-        Function<String, String> replaceColon = str -> str.replace(":", "=");
-        Function<String, String> addBraces = str -> "{" + str + "}";
+        UnaryOperator<Integer> square = n -> n * n;
+        UnaryOperator<Integer> increment = n -> n + 1;
 
+        increment.andThen(square).apply(1);
 
-//         Declarative Programming
-        var result = replaceColon
-                            .andThen(addBraces)
-                            .apply("key:value");
-        result = addBraces.compose(replaceColon).apply("key:value");
-
-
-        System.out.println(result);
     }
 }

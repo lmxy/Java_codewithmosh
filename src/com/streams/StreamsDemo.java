@@ -2,22 +2,19 @@ package com.streams;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class StreamsDemo {
 	public static void show() {
-		var movies = List.of(
-				new Movie("a", 10, Genre.THRILLER),
-				new Movie("b", 20, Genre.ACTION),
-				new Movie("c", 30, Genre.ACTION)
-		);
+		IntStream.of(1, 2, 3)
+				.forEach(System.out::println);
 
-		var result = movies.stream()
-				.collect(Collectors.partitioningBy(
-						movie -> movie.getLikes() > 20,
-						Collectors.mapping(Movie::getTitle,
-											Collectors.joining(", "))));
+		IntStream.range(1, 5)
+				.forEach(System.out::println);
 
-		System.out.println(result);
+		IntStream.rangeClosed(1, 5)
+				.forEach(System.out::println);
+
 
 	}
 }

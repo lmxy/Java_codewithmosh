@@ -1,25 +1,23 @@
 package com.streams;
 
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class StreamsDemo {
-    public static void show() {
-        List<Movie> movies = List.of(
-            new Movie("a", 10),
-            new Movie("b", 15),
-            new Movie("c", 20)
-        );
+	public static void show() {
+		var movies = List.of(
+				new Movie("a", 10, Genre.THRILLER),
+				new Movie("b", 20, Genre.ACTION),
+				new Movie("c", 30, Genre.ACTION)
+		);
 
-        // Imperative Programming
-        int count = 0;
-        for (var movie : movies)
-            if (movie.getLikes() > 10)
-                count++;
+		var result = movies.stream()
+				.collect(Collectors.partitioningBy(
+						movie -> movie.getLikes() > 20,
+						Collectors.mapping(Movie::getTitle,
+											Collectors.joining(", "))));
 
-        // Declarative (Functional) Programming
-        var count1 = movies.stream()
-                .filter(movie -> movie.getLikes() > 10)
-                .count();
-    }
+		System.out.println(result);
+
+	}
 }

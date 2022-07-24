@@ -1,16 +1,28 @@
 package com.concurrency;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ThreadDemo {
 	public static void show() {
-		Thread thread = new Thread(new DownloadFileTask());
-		thread.start();
+		var status = new DownloadStatus();
 
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+		List<Thread> threads = new ArrayList<>();
+
+		for (int i = 0; i < 10; i++) {
+			var thread = new Thread(new DownloadFileTask(status));
+			thread.start();
+			threads.add(thread);
 		}
 
-		System.out.println("File is ready to be scanned");
+		for (var thread : threads) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println(status.getTotalBytes());
 	}
 }

@@ -15,11 +15,12 @@ public class Movie {
         return likes;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
     public Genre getGenre() {
         return genre;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

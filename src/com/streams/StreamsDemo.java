@@ -1,20 +1,12 @@
 package com.streams;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.function.Predicate;
 
 public class StreamsDemo {
-	public static void show() {
-		IntStream.of(1, 2, 3)
-				.forEach(System.out::println);
+    public static void show() {
+        List<Movie> movies = List.of(
+        );
 
-		IntStream.range(1, 5)
-				.forEach(System.out::println);
-
-		IntStream.rangeClosed(1, 5)
-				.forEach(System.out::println);
-
-
-	}
+    }
 }

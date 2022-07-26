@@ -4,14 +4,17 @@ import java.util.concurrent.atomic.LongAdder;
 
 public class DownloadStatus {
     private boolean isDone;
-    private LongAdder totalBytes = new LongAdder();
+//    private LongAdder totalBytes = new LongAdder();
+    private int totalBytes;
     private int totalFiles;
 
     public int getTotalBytes() {
-        return totalBytes.intValue();
+        return totalBytes;
+//        return totalBytes.intValue();
     }
 
     public void incrementTotalBytes() {
-        totalBytes.increment();
+        totalBytes++;
+//        totalBytes.increment();
     }
 }
